@@ -3,79 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentación: Casa en Venta</title>
+    <title>Presentación Personal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* CSS GENERAL */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fcfcfc;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+        :root {
+            --rojo-pasion: #e62128;
+            --whatsapp: #25D366;
+            --telegram: #0088CC;
+            --lavanda: #f3e9f3;
+            --fondo: #f8f9fa;
         }
 
-        /* BARRA SUPERIOR (LAVANDA DE LA IMAGEN) */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--fondo);
+            color: #2d3436;
+            line-height: 1.6;
+        }
+
         .top-bar {
-            background-color: #f3e9f3;
-            height: 12px;
+            background-color: var(--lavanda);
+            height: 8px;
             width: 100%;
         }
 
-        /* CONTENEDOR PRINCIPAL */
         .main-container {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 40px;
-            padding: 60px 8%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-        }
-
-        /* COLUMNA DE TEXTO (IZQUIERDA) */
-        .info-column {
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+        }
+
+        /* DISEÑO DE ESCRITORIO (Se activa en pantallas grandes) */
+        @media (min-width: 769px) {
+            .main-container {
+                display: grid;
+                grid-template-columns: 1.2fr 1fr;
+                gap: 50px;
+                padding: 60px 5%;
+                align-items: center;
+            }
+        }
+
+        .info-column {
+            order: 2; /* En móvil el texto va después de la foto si quieres, o déjalo así */
         }
 
         .main-title {
-            color: #e62128; /* Rojo de la imagen original */
-            font-size: 3rem;
-            margin-bottom: 20px;
+            color: var(--rojo-pasion);
+            font-size: 1.8rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            font-weight: 800;
             text-transform: uppercase;
-            font-weight: 700;
         }
 
         .description {
-            font-size: 1.3rem;
-            line-height: 1.6;
-            text-decoration: underline; /* Mantenemos el subrayado */
-            text-decoration-color: #ddd;
-            text-underline-offset: 6px;
+            font-size: 1.1rem;
+            color: #444;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--rojo-pasion);
         }
 
-        /* COLUMNA DE GALERÍA (DERECHA) */
         .gallery-column {
+            order: 1;
+            margin-bottom: 30px;
             display: flex;
             justify-content: center;
-            align-items: center;
         }
 
         .featured-photo {
             width: 100%;
-            max-width: 450px;
-            height: auto;
-            border-radius: 12px;
+            max-width: 400px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            aspect-ratio: 1 / 1;
             position: relative;
-            background-color: #eee;
-            aspect-ratio: 1 / 1; /* Hacemos el área cuadrada */
         }
 
         .featured-photo img {
@@ -84,100 +94,61 @@
             object-fit: cover;
         }
 
-        .upload-overlay {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 10px 18px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1px solid #ddd;
-        }
-
-        .upload-overlay i {
-            color: #555;
-        }
-
-        /* FOOTER DE CONTACTO */
+        /* FOOTER Y BOTONES */
         .contact-footer {
-            background-color: #fff;
-            padding: 30px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: white;
+            padding: 30px 20px;
             border-top: 1px solid #eee;
-        }
-
-        .tel-info {
-            font-size: 1.2rem;
-            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
         }
 
         .social-contacts {
             display: flex;
-            gap: 15px;
+            flex-direction: column;
+            width: 100%;
+            gap: 12px;
+            max-width: 400px;
         }
 
-        /* BOTONES DE REDES SOCIALES (NORMALIZADOS) */
         .contact-btn {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 25px;
-            border-radius: 25px;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 12px;
             text-decoration: none;
             color: #fff;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
         }
 
-        .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        .contact-btn:active {
+            transform: scale(0.98);
         }
 
-        .btn-whatsapp {
-            background-color: #25D366; /* Verde WP */
-        }
+        .btn-whatsapp { background-color: var(--whatsapp); }
+        .btn-telegram { background-color: var(--telegram); }
 
-        .btn-telegram {
-            background-color: #0088CC; /* Azul Telegram */
-        }
-
-        .email-info {
-            font-size: 1.2rem;
-            color: #555;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .tel-link, .email-link {
+            color: #636e72;
             text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
-        .email-info span {
-            color: #e62128; /* Rojo de la imagen original */
-        }
+        .email-link span { color: var(--rojo-pasion); }
 
-        /* ADAPTACIÓN MÓVIL (RESPONSIVE) */
+        /* AJUSTES ESPECÍFICOS PARA MÓVIL */
         @media (max-width: 768px) {
-            .main-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 40px 5%;
-            }
-
-            .main-title {
-                font-size: 2.2rem;
-            }
-
-            .contact-footer {
-                flex-direction: column;
-                gap: 20px;
-            }
+            .main-title { font-size: 1.5rem; text-align: center; }
+            .description { font-size: 1rem; }
+            .info-column { order: 1; }
+            .gallery-column { order: 2; }
         }
     </style>
 </head>
@@ -187,51 +158,41 @@
 
     <main class="main-container">
         <section class="info-column">
-            <h1 class="main-title">Hombre de 35 años, (85kg/1.82m/22cm🍌) con las ideas muy claras❤️‍🔥</h1>
-            <p class="description"> 
-            Busco una mujer en la provincia de Zaragoza que necesite un respiro de la rutina, alguien con quien compartir momentos de calidad bajo la más estricta privacidad. 
-            Soy educado, sé escuchar y entiendo perfectamente el valor de la discreción🤫 
-            
-                Si buscas a alguien que sepa estar y que no complique tu vida, hablemos. <br>
-            Sin dramas, sin presiones y con total libertad. 
-                No Pago/Ni Cobro, únicamente por placer.
+            <h1 class="main-title">Hombre de 35 años, (85kg/1.82m) con las ideas muy claras❤️‍🔥</h1>
+            <div class="description">
+                Busco una mujer en la provincia de Zaragoza que necesite un respiro de la rutina, alguien con quien compartir momentos de calidad bajo la más estricta privacidad. <br><br>
+                Soy educado, sé escuchar y entiendo perfectamente el valor de la discreción🤫<br><br>
+                Si buscas a alguien que sepa estar y que no complique tu vida, hablemos. 
+                Sin dramas, sin presiones y con total libertad. <br><br>
+                <strong>No Pago/Ni Cobro, únicamente por placer.</strong><br>
                 Escríbeme Ahora⬇️
-            </p>
+            </div>
         </section>
 
         <section class="gallery-column">
             <div class="featured-photo">
-                <img src="DaniZGZ.jpg" alt="Foto principal de la casa">
-                
-                <div class="upload-overlay">
-                    <i class="fas fa-plus"></i>
-                    <span>Galería de fotos</span>
-                </div>
+                <img src="DaniZGZ.jpg" alt="Foto de Dani">
             </div>
         </section>
     </main>
 
     <footer class="contact-footer">
-        <div class="tel-info">
-            Teléfono: <a href="tel:614130774">614130774</a>
-        </div>
+        <a href="tel:614130774" class="tel-link">
+            <i class="fas fa-phone-alt"></i> Llamar: 614130774
+        </a>
 
         <div class="social-contacts">
-            <a href="https://wa.me/614130774" class="contact-btn btn-whatsapp">
-                <i class="fab fa-whatsapp"></i>
-                WhatsApp
+            <a href="https://wa.me/34614130774" class="contact-btn btn-whatsapp">
+                <i class="fab fa-whatsapp fa-lg"></i> WhatsApp
             </a>
-            
             <a href="https://t.me/BomberoPower" class="contact-btn btn-telegram">
-                <i class="fab fa-telegram-plane"></i>
-                Telegram
+                <i class="fab fa-telegram-plane fa-lg"></i> Telegram
             </a>
         </div>
 
-        <div class="email-info">
-            E-MAIL
-            <a href="dani8969zgz@gmail.com"><i class="far fa-envelope"></i> <span>dani8969zgz@gmail.com</span></a>
-        </div>
+        <a href="mailto:dani8969zgz@gmail.com" class="email-link">
+            <i class="far fa-envelope"></i> <span>dani8969zgz@gmail.com</span>
+        </a>
     </footer>
 
 </body>
