@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venta de Piso en Zaragoza</title>
+    <title>Presentación Personal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -33,17 +33,23 @@
             max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* DISEÑO DE ESCRITORIO */
+        /* DISEÑO DE ESCRITORIO (Se activa en pantallas grandes) */
         @media (min-width: 769px) {
             .main-container {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1.2fr 1fr;
                 gap: 50px;
                 padding: 60px 5%;
-                align-items: start;
+                align-items: center;
             }
+        }
+
+        .info-column {
+            order: 2; /* En móvil el texto va después de la foto si quieres, o déjalo así */
         }
 
         .main-title {
@@ -59,49 +65,44 @@
             font-size: 1.1rem;
             color: #444;
             background: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             border-left: 5px solid var(--rojo-pasion);
+        }
+
+        .gallery-column {
+            order: 1;
             margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
         }
 
-        /* NUEVA GALERÍA DE FOTOS */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* 2 columnas en móvil y PC */
-            gap: 15px;
-        }
-
-        .photo-item {
+        .featured-photo {
             width: 100%;
-            aspect-ratio: 1 / 1;
-            border-radius: 15px;
+            max-width: 400px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            aspect-ratio: 1 / 1;
+            position: relative;
         }
 
-        .photo-item img {
+        .featured-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .photo-item img:hover {
-            transform: scale(1.05);
         }
 
         /* FOOTER Y BOTONES */
         .contact-footer {
             background: white;
-            padding: 40px 20px;
+            padding: 30px 20px;
             border-top: 1px solid #eee;
             display: flex;
             flex-direction: column;
             gap: 20px;
             align-items: center;
-            text-align: center;
         }
 
         .social-contacts {
@@ -123,6 +124,11 @@
             color: #fff;
             font-weight: 700;
             font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+
+        .contact-btn:active {
+            transform: scale(0.98);
         }
 
         .btn-whatsapp { background-color: var(--whatsapp); }
@@ -137,8 +143,12 @@
 
         .email-link span { color: var(--rojo-pasion); }
 
+        /* AJUSTES ESPECÍFICOS PARA MÓVIL */
         @media (max-width: 768px) {
             .main-title { font-size: 1.5rem; text-align: center; }
+            .description { font-size: 1rem; }
+            .info-column { order: 1; }
+            .gallery-column { order: 2; }
         }
     </style>
 </head>
@@ -148,25 +158,21 @@
 
     <main class="main-container">
         <section class="info-column">
-            <h1 class="main-title">Habitación Discreta En Zaragoza</h1>
+            <h1 class="main-title">Hombre de 35 años (85kg/1.82m/22cm🍌) con las ideas muy claras❤️‍🔥</h1>
             <div class="description">
-                Habitacion temporal para solteros<br><br>
-               Necesitas una habitacion temporal para cortas estancias?<br><br>
-               Tengo lo que necesitas, no dudes en escribirme.<br><br>
-                <strong>Centro de Zaragoza</strong><br>
+                Busco mujer en Zaragoza o cercanías que necesite un respiro de la rutina, alguien con quien compartir momentos de calidad bajo la más estricta privacidad. <br><br>
+                Soy educado, sé escuchar y entiendo perfectamente el valor de la discreción🤫<br><br>
+                Si buscas a alguien que sepa estar y que no complique tu vida, hablemos. 
+                Sin dramas, sin presiones y con total libertad. <br><br>
+                <strong>No Pago, Ni Cobro</strong><br>
                 Escríbeme Ahora⬇️
             </div>
         </section>
 
         <section class="gallery-column">
-            <div class="gallery-grid">
-                <div class="photo-item">
-                    <img src="piso1.jpg" alt="Foto principal del piso">
-                </div>
-                <div class="photo-item">
-                    <img src="piso2.jpg" alt="Segunda foto del piso">
-                </div>
-                </div>
+            <div class="featured-photo">
+                <img src="DaniZGZ.jpg" alt="Foto de Dani">
+            </div>
         </section>
     </main>
 
